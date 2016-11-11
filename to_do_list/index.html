@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TodoList"><!-- en ng-app el nombre del modulo -->
+<head>
+	<meta charset="UTF-8">
+	<title>hola todo list angular</title>
+
+	<script src="../js/angular.min.js"></script>
+	<script src="angular-local-storage.min.js"></script>
+	<script src="todoList.js"></script>
+</head>
+<!-- un to_do list es agregar elementos a lo que queremos hacer descargar angular-local-store-->
+<body ng-controller="TodoController"><!--Nombre dle controlador ng-controller -->
+	<h2>Ejemplo de como hacer listas guardandolas con localstorage y si recargan la pagina se quedan guardadas</h2>
+	<ul>
+		<li ng-repeat="actividad in todo">
+			{{actividad.descripcion}} -
+			<!--aplicamos un filtro para la fecha y darle formato se identifica un filtro cone l caracter | OR -->
+			{{actividad.fecha | date: 'short'}}
+		</li>
+	</ul>
+	<!-- nueva directiva ng-submit activa el evento submit del formulario llamamos la function addActividad, sea dandole enter o en el boton-->
+	<form ng-submit="addActividad()">
+		<input type="text" ng-model="newActividad.descripcion">
+		<input type="datetime-local" ng-model="newActividad.fecha">
+		<input type="submit" value="Guardar Actividad"> 
+	</form>
+	<button ng-click="cleanActividad()">Limpiar actividar</button>
+</body>
+</html>

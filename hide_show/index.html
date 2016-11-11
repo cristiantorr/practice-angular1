@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyFirstApp"><!-- en ng-app el nombre del modulo -->
+<head>
+	<meta charset="UTF-8">
+	<title>hola peticiones ajax angular</title>
+	<!-- Se agregan los estilos para manipular la clase ng-hide que s eagrega al elemento-->
+	<style type="text/css">
+		.animated{
+			opacity: 1;
+			max-height: auto;
+			overflow: hidden;
+			transition: all 2s;
+		}
+		.animated.ng-hide{
+			opacity: 0;
+			max-height: 0px !important;
+			display: block !important;
+		}
+	</style>
+	<script src="../js/angular.min.js"></script>
+	<script src="hide_show.js"></script>
+</head>
+<body ng-controller="MyFirstAppController"><!--Nombre dle controlador ng-controller -->
+<!-- EXPLICAR NG-HIDE
+*NG-HIDE directiva que recibe como parametro un booleano (true o false) en este ejemplo estamos diciendo: si hay posts los mueestra si no los oculta, simepre sera verdadero o falso.
+*NG-HIDE agrega la clase ng-hide que oculta los elementos.
+ejemplo : 	<ul ng-hide ="posts.length == 0"> ocultar los posts cuando no hay nada osea cero.
+
+
+*NG-SHOW directiva que hace que agrega la clase ng-hide al elemento cuando la condicion sea falsa.
+-ejemplo: <ul ng-show ="posts.length !== 0"> - mostrar los post siempre y cuando sea diferente de cero.
+-->
+	<div ng-show="loading">Cargando</div><!-- muestra el cargando mientras el servidor trae los post-->
+	<div ng-show="!loading && posts.length == 0 ">No se encontraron resultados</div><!-- no se encuentran resultados cuando ya es diferente el cargando osea ya no esta cargando y los posts son igual a ceros.-->
+	<ul ng-hide ="posts.length <= 0" class="animated">
+		<!--imprimimos el title y el body de los posts-->
+		<li ng-repeat="post in posts">
+			<h2>{{post.title}}</h2>
+			<p>{{post.body}}</p>
+		</li>
+	</ul>
+</body>
+</html>

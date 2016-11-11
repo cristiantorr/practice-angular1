@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyFirstApp">
+<head>
+    <meta charset="UTF-8">
+    <title>child rootscope</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="child_rootscope.js"></script>
+</head>
+<body ng-controller="FirstController">
+    <h1>{{nombre}}</h1> <!-- Como esta mostrando el hijo (de la variable  controller ->scope) YA QUE por defecto siempre se mostrara el hijo cuando hereda un controlador ejemplo:
+    $rootScope.numero = uno
+    $scope.numero = dos
+    $scope hereda de rootscope y muestra el valor hijo que es dos. con $parent.numero voy a mostrar uno ya que le estoy diciendo que el padre(parent).
+     -->
+    <p><strong>Valor del padre: </strong>{{$parent.nombre}}</p><!-- Aqui muestra el padre  que es CRISTIAN TORRES  con el atributo $parent-->
+    <!-- por que ChildController es el hijo y hereda todo de FirstController simplemente porque ChildController esta dentro de la declaración de FirtsController, en el codigo js no se ve esto pero siemplemente el padre es el ng-controller="FirstController" ya que esta en el body entonces  ChildController esta anidado de FirtsController. pos rso nos devuelve el valor del scope padre.-->
+    <div ng-controller="ChildController">
+        <!--<p><strong>Valor del hijo : </strong>{{$parent.$parent.nombre}}</p>--><!-- Mostramos el valor del padre accediendo primero al hijo $parent y condoble $parente accedemos al parentesco del hijo que es padre-->
+        <p><strong>Valor del hijo : </strong>{{nombre}}</p>
+        <!--<input type="text" ng-model="nombre">--><!-- Si editamos el input y copiamos cualquier cosa desde el navegagor solo se actualizara el valor del hijo por solo esta anidado en el controllador child -->
+        <input type="text" ng-model="$parent.nombre"><!-- En cambio si le ponemos $parent y el input este anidado en el controlador child tomara tambien el dell padre.-->
+    </div>
+
+</body>
+</html>

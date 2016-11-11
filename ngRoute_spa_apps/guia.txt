@@ -1,0 +1,7 @@
+En este tutorial debesmos:
+* que es routin: es la forma como nosotros definimos como va responder la aplicación a diferentes url.
+
+
+- Descargar angular version 1.4 o mayor
+- descargar en la pagina oficial de angular el archivo angular-route.min.js,  este se puede decargar dandole click a angular y despues en "Browse additional modules".
+- Hacer un archivo de directives.js en este colocamos nuestras directivas ejecutando el modulo /**var app = angular.module('CustomDirective'); **/ sin los [] ya que haci indicamos que lo vamos a utilizar para todo.

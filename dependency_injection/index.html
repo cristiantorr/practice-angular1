@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyFirstApp"><!-- en ng-app el nombre del modulo -->
+<head>
+	<meta charset="UTF-8">
+	<title>hola controller angular</title>
+	<script src="../js/angular.min.js"></script>
+	<script src="dependency.js"></script>
+</head>
+<body ng-controller="MyFirstAppController"><!--Nombre dle controlador ng-controller -->
+<!-- la variable nombre se sincroniza con la variable $scope-->
+	<label>Usuario :</label>
+	<input type="text" ng-model="nuevoUserComentario.username">
+	<label>Comentario:</label>
+	<input type="text" ng-model="nuevoUserComentario.comentario">
+	<button ng-click="agregarComentario()">Agregar Comentario</button><!--ng-click llamamos la funcion-->
+
+	<h3>Comentarios:</h3>
+	<ul>
+		<li ng-repeat="comentario in comentarios">
+			{{comentario.comentario}}-<strong>{{comentario.username}}</strong>
+		</li>
+	</ul>
+	
+</body>
+</html>

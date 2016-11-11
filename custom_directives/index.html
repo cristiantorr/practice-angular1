@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CustomDirective">
+<head>
+    <meta charset="UTF-8">
+    <title>custom directives</title>
+    <link rel="stylesheet" href="autocomplete-jquery-ui.structure.css">
+    <script src="../js/angular.min.js"></script>
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="autocomplete-jquery-ui.js"></script>
+    <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+
+    <script src="directives.js"></script>
+    <style>
+    .circular{
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    .no-list li{
+        list-style-type: none;
+    }
+    body,html{
+        text-align: center;
+        background-color: #eee;
+        margin: 0px;
+
+    }
+    </style>
+
+</head>
+<body ng-controller="AppCtrl">
+    <!--<input type="text" my-autocomplete="repos" placeholder="Buscar repositorio">-->
+    <!--<ul class="no-list" ng-cloak>
+        <li ng-repeat="repos in posts" ng-hide="main_repo && main_repo != repo.name">
+        <div class="circular" back-img="{{repo.owner.avatar_url}}"></div>
+        <h1 class="inline-block">{{repo.full_name}}</h1>
+        </li>
+    </ul>-->
+    <input type="text" my-autocomplete="repos" placeholder="Buscar repositorio">
+     <ul class="no-list">
+        <li ng-repeat="repo in posts" ng-hide="main_repo && main_repo != repo.name">
+            <!-- Directive back-img-->
+            <div class="circular" back-img="{{repo.owner.avatar_url}}"></div>
+            <h1 class="inline-block">{{repo.full_name}}</h1>
+        </li>
+    </ul>
+    <a ng-click="main_repo = null" class>Limpiar</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainModule"><!-- en ng-app el nombre del modulo -->
+<head>
+	<meta charset="UTF-8">
+	<title>hola todo list angular</title>
+
+	<script src="../js/angular.min.js"></script>
+	<script src="angular-local-storage.min.js"></script>
+	<script src="filters.js"></script>
+</head>
+<!-- un to_do list es agregar elementos a lo que queremos hacer descargar angular-local-store-->
+<body ng-controller="FiltersController"><!--Nombre dle controlador ng-controller -->
+	<h2>Filters</h2>
+	{{mi_html | removeHtml}}<br /> <!-- nombre d evariable a imprimir el texto (mi_html) y se pone la barra luego s ellama el filtro-->
+	{{mijson_html | json}}<!-- Filtro json-->
+	{{costo |  currency}}<!-- Filtro Costo-->
+</body>
+</html>

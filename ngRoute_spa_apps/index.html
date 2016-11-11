@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CustomDirective">
+<head>
+    <meta charset="UTF-8">
+    <title>nRoute spa apps</title>
+    <link rel="stylesheet" href="autocomplete-jquery-ui.structure.css">
+    <script src="angular1-5.min.js"></script>
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="autocomplete-jquery-ui.js"></script>
+    <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+    <script src="angular-route.min.js"></script>
+    <script src="ngroute.js"></script>
+    <script src="directives.js"></script><!-- Lo llamamos despues del principal ngroute-->
+    <script src="controller.js"></script>
+    <style>
+    .circular{
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    .no-list li{
+        list-style-type: none;
+    }
+    body,html{
+        text-align: center;
+        background-color: #eee;
+        margin: 0px;
+
+    }
+    </style>
+</head>
+<body>
+<div ng-view></div>
+</body>
+</html>

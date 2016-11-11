@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply, digest, watch</title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body ng-controller="FirstController">
+
+    <!-- EVENTOS
+    * $apply -> Se ejecuta cuando angular es el que se encarga de registrar un evento ejemplo ng-click o ng-submit etc, esos eventos ejecutan loq ue tienen que hacer y llaman a $apply.
+    *
+    *watch o watchers -> Evalua si un valor se modifico o no, se pueden registrar watchers (ejemplo carpeta to_do_lis en el archivo todoList se creo un $watchColletion eso ya es por que lo creamos) pero  angular por defecto crea uno para cada atributo en la vista ejemplo: si nosotros creamos una variable angular crea un watcher , si nosotros creamos un objeto con tres atributos y lo depslegamos en la vista se crean tres watcher y el watcher revisa si ahi un valor cambiando.
+
+    * $digest -> Cuando se llama este evento lo que hace es iterar la lista de watcher lo que quiere decir es que pasa por cada watcher y pregunta ¿oye tu valor cambio? si, entonces actualiza la vista si no entonces no hace nada y asi sucesivamente , entonces digest es el que automaticamente actualiza la vista y el controlador cuando alguno de los atributos están desplegados se modifica.
+
+
+    -->
+    <script>
+        var app = angular.module("mainModule", []);
+        app.controller("FirstController", ["$scope" ,function($scope){
+            $scope.nombre = "Cristian";
+           /* se utilizo setTimeout para actualizar en dos segundos*/
+                /* Se crea una function apply para que se ejecute todo primero dentro de este evento por si hay errores y luego manda a llamar a digest que actualice la vista*/
+            setTimeout(function(){
+                 $scope.$apply(function(){
+                    $scope.nombre = 'Codigo Facilito';
+                });
+            },2000);
+            /*para cambiar desde boton y no usar apply comentemos el setTmeout o lo dejamos y se cambia la variable con el nombre codigo facilito y si presionamos el boton cambia a "cambiar desde boton"*/
+            $scope.cambiarVariable = function(){
+                $scope.nombre = 'Cambiar desde boton';
+            }
+        }]);
+    </script>
+        <h2>{{nombre}}</h2>
+        <button type="" ng-click="cambiarVariable()">cambiar desde Botón</button>
+</body>
+</html>
